@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <ul>
+        <% data.forEach( pokemon=> { %>
+            <li>
+                <%= pokemon.name %>
+            </li>
+            <% }); %>
+    </ul>
+
+    <form action="/page" method="POST">
+        <button type="submit">1</button>
+        <button type="submit">2</button>
+        <button type="submit">3</button>
+        <button type="submit">4</button>
+        <button type="submit">5</button>
+    </form>
+
+</body>
+
+</html>
