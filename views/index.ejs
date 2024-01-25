@@ -14,11 +14,15 @@
         <%= title %>
     </h1>
     <ul>
-        <% if(locals.data) { data.forEach( pokemon=> { %>
+        <% if(locals.pokeArray) { pokeArray.forEach( pokemon=> { %>
             <li>
                 <h3>
                     <%= pokemon.name %>
                 </h3>
+                <p>
+                    <%= pokemon.types[0].type.name %>
+                </p>
+                <img src=<%=pokemon.image %> alt="imageOfPokemon" >
             </li>
             <% })}; %>
     </ul>
