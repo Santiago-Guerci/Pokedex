@@ -6,6 +6,8 @@ const app = express();
 const port = 3000;
 const API_URL = "https://pokeapi.co/api/v2";
 
+app.use(express.static("public"));
+
 //Home
 app.get("/", (req, res) => {
   res.render("index.ejs", { title: "Hola Mundo!" });

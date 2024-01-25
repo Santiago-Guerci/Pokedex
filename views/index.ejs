@@ -10,36 +10,50 @@
 </head>
 
 <body>
-    <h1>
-        <%= title %>
-    </h1>
-    <ul>
-        <% if(locals.pokeArray) { pokeArray.forEach( pokemon=> { %>
-            <li>
-                <h3>
-                    <%= pokemon.name %>
-                </h3>
-                <p>
-                    <%= pokemon.types[0].type.name %>
-                </p>
-                <img src=<%=pokemon.image %> alt="imageOfPokemon" >
-            </li>
-            <% })}; %>
-    </ul>
+    <%- include("partials/header.ejs") %>
 
-    <form method="post">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><input type="submit" value="1" class="page-link" formaction="/page/0"></li>
-                <li class="page-item"><input type="submit" value="2" class="page-link" formaction="/page/10"></li>
-                <li class="page-item"><input type="submit" value="3" class="page-link" formaction="/page/20"></li>
+        <div class="container d-flex justify-content-center flex-column">
+            <h1 class="text-center">
+                <%= title %>
+            </h1>
+
+            <ul class="d-flex justify-content-center flex-wrap">
+                <% if(locals.pokeArray) { pokeArray.forEach( pokemon=> { %>
+
+                    <div class="card text-center m-3" style="width: 18rem;">
+                        <img src=<%=pokemon.image %> class="card-img-top" alt="imageOfPokemon">
+                        <div class="card-body" style="background-color: aqua;">
+                            <h5 class="card-title">
+                                <%= pokemon.name %>
+                            </h5>
+                            <p class="card-text">Type: <%= pokemon.types[0].type.name %>
+                            </p>
+                            <a href="#" class="btn btn-primary">See more</a>
+                        </div>
+                    </div>
+
+                    <% })}; %>
             </ul>
-        </nav>
-    </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+
+            <form method="post">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination d-flex justify-content-center">
+                        <li class="page-item"><input type="submit" value="1" class="page-link" formaction="/page/0">
+                        </li>
+                        <li class="page-item"><input type="submit" value="2" class="page-link" formaction="/page/10">
+                        </li>
+                        <li class="page-item"><input type="submit" value="3" class="page-link" formaction="/page/20">
+                        </li>
+                    </ul>
+                </nav>
+            </form>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
