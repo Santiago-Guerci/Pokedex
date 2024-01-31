@@ -31,6 +31,16 @@ app.post("/page/:id", async (req, res) => {
   res.render("index.ejs", { title: "Lista de Pokemons", pokeArray: pokeArray });
 });
 
+//Get pokemon by name
+app.get("/pokemon/:name", async (req, res) => {
+  const name = req.params.name;
+  const response = await axios.get(API_URL + `/pokemon/${name}`);
+  const data = response.data;
+
+  const pokemon = new Pokemon(data.id, data.name, data.types, data.sprites.front_default);
+  res.render("pokemon.ejs", { title: "Pokemon", pokemon: pokemon });
+});
+
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
